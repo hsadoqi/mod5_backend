@@ -11,12 +11,13 @@ class UsersController < ApplicationController
     end 
 
     def create
+        # debugger
         @user = User.create(user_params)
-        
+        # debugger
         if @user.valid?
             render json: @user 
         else 
-            render json: @user.errors.full_messages 
+            render json: @user.errors.full_messages
         end 
     end 
 
