@@ -15,9 +15,10 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         # debugger
         if @user.valid?
-            render json: @user 
+            token = JWT.encode({id: @user.id}, 'SECRET')
+            render json: {user: @user, jwt: token}
         else 
-            render json: @user.errors.full_messages
+            render json: { error: 'WRONG'}, status: 422
         end 
     end 
 

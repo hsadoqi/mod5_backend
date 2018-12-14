@@ -1,16 +1,25 @@
+require 'jwt'
+
 class AuthController < ApplicationController
     def create 
         user = User.find_by(username: login_user_params[:username])
+        # debugger
         if user && user.authenticate(login_user_params[:password])
-            render json: {id: user.id, username: user.username}
+            token = JWT.encode({id: user.id}, 'SECRET')
+            # debugger
+            render json: {user: user, jwt: token}
         else 
-            render json: { error: ''}, status: 400
+            render json: auth.errors.full_messages, status: 400
         end 
     end 
 
     def show 
-        id = request.authorization.to_i 
+        # debugger
+        string = request.authorization
+        token = JWT.decode(string, 'SECRET')[0]
+        id = token["id"].to_i
         @user = User.find(id)
+        # debugger
         if @user 
             render json: {id: @user.id, username: @user.username}
         else 
@@ -21,7 +30,7 @@ class AuthController < ApplicationController
     private 
 
     def login_user_params
-        paraams.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password)
     end 
 
 end
