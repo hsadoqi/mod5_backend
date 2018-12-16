@@ -9,7 +9,7 @@ class AuthController < ApplicationController
             # debugger
             render json: {user: user, jwt: token}
         else 
-            render json: auth.errors.full_messages, status: 400
+            render json: errors.full_messages, status: 400
         end 
     end 
 
@@ -21,7 +21,7 @@ class AuthController < ApplicationController
         @user = User.find(id)
         # debugger
         if @user 
-            render json: {id: @user.id, username: @user.username}
+            render json: {user: @user}
         else 
             render json: {error: ''}, status: 422
         end 
