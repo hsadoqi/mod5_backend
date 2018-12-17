@@ -2,11 +2,13 @@ require 'jwt'
 
 class AuthController < ApplicationController
     def create 
-        user = User.find_by(username: login_user_params[:username])
+        @user = User.find_by(username: login_user_params[:username])
         # debugger
-        if user && user.authenticate(login_user_params[:password])
-            token = JWT.encode({id: user.id}, 'SECRET')
+        if @user && @user.authenticate(login_user_params[:password])
+            token = JWT.encode({id: @user.id}, 'SECRET')
             # debugger
+            user = UserSerializer.new(@user)
+
             render json: {user: user, jwt: token}
         else 
             render json: errors.full_messages, status: 400
@@ -21,7 +23,8 @@ class AuthController < ApplicationController
         @user = User.find(id)
         # debugger
         if @user 
-            render json: {user: @user}
+            user = UserSerializer.new(@user)
+            render json: {user: user}
         else 
             render json: {error: ''}, status: 422
         end 

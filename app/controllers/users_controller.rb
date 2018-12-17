@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     end 
 
     def show 
-        render json: @user
+        user = UserSerializer.new(@user).serializable_hash
+        render json: user
     end 
 
     def create
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
         # debugger
         if @user.valid?
             token = JWT.encode({id: @user.id}, 'SECRET')
-            render json: {user: {id: @user.id, username, @user.username, bio: @user.bio}, jwt: token}
+            user = UserSerializer.new(@user).serializable_hash
+            render json: {user: user, jwt: token}
         else 
             render json: { error: 'WRONG'}, status: 422
         end 
