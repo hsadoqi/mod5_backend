@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
     def update 
         if @user.update(user_params)
+            # debugger
             render json: @user 
         else
             render json: @user.errors.full_messages 
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
     end 
 
     def user_params
-        params.require(:user).permit(:name, :username, :password, :bio)
+        params.require(:user).permit(:name, :username, :password, :bio, :public, :img, :facebook, :twitter, :linkedin, :interests)
     end 
 
 

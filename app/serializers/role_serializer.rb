@@ -1,5 +1,5 @@
 class RoleSerializer < ActiveModel::Serializer
-  attributes :id, :project, :applicants
+  attributes :id, :project, :applicants, :title, :description
 
   def applicants
     self.object.applications.map do |app|

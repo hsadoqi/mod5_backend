@@ -5,6 +5,4 @@ class Project < ApplicationRecord
     has_many :roles, class_name: 'Role'
     has_many :applications, through: :roles
 
-    
-
 end

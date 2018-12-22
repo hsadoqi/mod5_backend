@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_213624) do
   create_table "applications", force: :cascade do |t|
     t.bigint "collaborator_id"
     t.bigint "role_id"
+    t.boolean "approve"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collaborator_id"], name: "index_applications_on_collaborator_id"
@@ -28,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_12_12_213624) do
     t.string "title"
     t.string "img"
     t.string "description"
+    t.string "content"
+    t.string "category"
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_213624) do
 
   create_table "roles", force: :cascade do |t|
     t.string "title"
+    t.string "description"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,6 +51,12 @@ ActiveRecord::Schema.define(version: 2018_12_12_213624) do
     t.string "username"
     t.string "password_digest"
     t.string "bio"
+    t.boolean "public"
+    t.string "img"
+    t.string "facebook"
+    t.string "twitter"
+    t.string "linkedin"
+    t.string "interests"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

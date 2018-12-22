@@ -7,14 +7,18 @@ class ProjectsController < ApplicationController
     end 
 
     def show 
-        render json: @project
+        project = ProjectSerializer.new(@project).serializable_hash
+        # debugger
+        render json: project
+        # debugger
     end 
 
     def create
         @project = Project.create(project_params)
         
         if @project.valid?
-            render json: @project 
+            project = ProjectSerializer.new(@project).serializable_hash
+            render json: project
         else 
             render json: @project.errors.full_messages 
         end 

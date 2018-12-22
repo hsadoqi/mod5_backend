@@ -5,6 +5,12 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string 'username'
       t.string 'password_digest'
       t.string 'bio'
+      t.boolean 'public'
+      t.string 'img'
+      t.string 'facebook'
+      t.string 'twitter'
+      t.string 'linkedin'
+      t.string 'interests'
       t.timestamps
     end
   end

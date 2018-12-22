@@ -4,6 +4,8 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string 'title'
       t.string 'img'
       t.string 'description'
+      t.string 'content'
+      t.string 'category'
       t.references :manager
       t.timestamps
     end
