@@ -10,7 +10,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string 'facebook'
       t.string 'twitter'
       t.string 'linkedin'
-      t.string 'interests'
+      t.string 'firstPreference'
+      t.string 'secondPreference'
+      t.string 'thirdPreference'
       t.timestamps
     end
   end

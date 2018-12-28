@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :username, :bio, :facebook, :twitter, :linkedin, :interests, :img, :public, :projects, :applications
+  attributes :id, :name, :username, :bio, :facebook, :twitter, :linkedin, :firstPreference, :secondPreference, :thirdPreference, :img, :public, :projects, :applications
 
   def projects
     self.object.projects.map do |project|

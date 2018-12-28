@@ -6,6 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string 'description'
       t.string 'content'
       t.string 'category'
+      t.boolean 'completed'
       t.references :manager
       t.timestamps
     end

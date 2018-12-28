@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :roles, :manager, :content, :category, :img
+  attributes :id, :title, :description, :roles, :manager, :content, :category, :img, :completed
 
   # def manager 
   #   self.object.manager

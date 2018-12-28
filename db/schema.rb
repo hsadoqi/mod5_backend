@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_213624) do
     t.string "description"
     t.string "content"
     t.string "category"
+    t.boolean "completed"
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,7 +57,9 @@ ActiveRecord::Schema.define(version: 2018_12_12_213624) do
     t.string "facebook"
     t.string "twitter"
     t.string "linkedin"
-    t.string "interests"
+    t.string "firstPreference"
+    t.string "secondPreference"
+    t.string "thirdPreference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

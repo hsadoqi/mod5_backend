@@ -25,7 +25,9 @@
         linkedin: 'https://www.linkedin.com/in/hanaasadoqi/',
         img: Faker::Avatar.image,
         public: false, 
-        interests: Faker::Hipster.words(4)
+        firstPreference: ['Photography', 'Theater', 'Music', 'Performance', 'Dance', 'Art'].sample,
+        secondPreference: ['Photography', 'Theater', 'Music', 'Performance', 'Dance', 'Art'].sample,
+        thirdPreference: ['Photography', 'Theater', 'Music', 'Performance', 'Dance', 'Art'].sample
     )
 end 
 
@@ -33,10 +35,11 @@ end
     Project.create(
         title: Faker::RickAndMorty.location,
         img: ['https://www.w3schools.com/w3images/fjords.jpg', 'https://www.w3schools.com/w3images/nature.jpg', 'https://www.w3schools.com/w3images/lights.jpg', 'https://techcrunch.com/wp-content/uploads/2018/03/gettyimages-705351545.jpg?w=730&crop=1', 'https://demo.phpgang.com/crop-images/demo_files/pool.jpg', 'https://www.reduceimages.com/img/image-after.jpg', 'https://static.addtoany.com/images/dracaena-cinnabari.jpg', 'http://www.everlastingcelebrations.com/wp-content/uploads/2018/09/Top-Ganesh-Chaturthi-Messages-Images-Photos.jpg'].sample, 
-        category: Faker::Book.genre,
+        category: ['Photography', 'Theater', 'Music', 'Performance', 'Dance', 'Art'].sample,
         description: Faker::Seinfeld.quote,
         content: Faker::Lorem.paragraph,
-        manager_id: Faker::Number.between(1, 20)
+        manager_id: Faker::Number.between(1, 20), 
+        completed: [true, false].sample
     )
 end 
 
