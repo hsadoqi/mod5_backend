@@ -39,7 +39,7 @@ end
         description: Faker::Seinfeld.quote,
         content: Faker::Lorem.paragraph,
         manager_id: Faker::Number.between(1, 20), 
-        completed: [true, false].sample
+        completed: false
     )
 end 
 
@@ -47,7 +47,8 @@ end
     Role.create(
         title: Faker::Job.position,
         description: Faker::Lorem.sentence,
-        project_id: Faker::Number.between(1, 50)
+        project_id: Faker::Number.between(1, 50), 
+        filled: false
     )
 end 
 
@@ -55,7 +56,8 @@ end
     Application.create(
         role_id: Faker::Number.between(1, 100),
         collaborator_id: Faker::Number.between(1, 20),
-        approve: [true, false].sample
+        approve: false, 
+        reject: false
     )
 end 
 

@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-    before_action :application, only: [:show, :update, :destroy]
+    before_action :set_application, only: [:show, :update, :destroy]
 
     def index 
         @applications = Application.all 
@@ -7,7 +7,8 @@ class ApplicationsController < ApplicationController
     end 
 
     def show 
-        render json: @application
+        application = ApplicationSerializer.new(@application).serializable_hash
+        render json: application
     end 
 
     def create
@@ -21,7 +22,8 @@ class ApplicationsController < ApplicationController
     end 
 
     def update 
-        if @application.update(user_params)
+        if @application.update(application_params)
+            # byebug
             render json: @application 
         else
             render json: @application.errors.full_messages 
@@ -39,6 +41,6 @@ class ApplicationsController < ApplicationController
     end 
 
     def application_params
-        params.require(:application).permit(:collaborator_id, :role_id)
+        params.require(:application).permit(:collaborator_id, :role_id, :approve, :reject)
     end 
 end
